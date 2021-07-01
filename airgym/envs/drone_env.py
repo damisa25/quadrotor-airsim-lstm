@@ -219,7 +219,7 @@ class AirSimDroneEnv(AirSimEnv):
         # pts = [np.array([-0.55265, -31.9786, -19.0225]),np.array([48.59735, -63.3286, -60.07256]),np.array([193.5974, -55.0786, -46.32256]),np.array([369.2474, 35.32137, -62.5725]),np.array([541.3474, 143.6714, -32.07256]),]
 
         # quad_pt = np.array(list((self.state["position"].x_val, self.state["position"].y_val,self.state["position"].z_val,)))
-        pos = self.state["pos"]
+        pos = self.state["gps"]
         des = self.destination
         dist = 10000000
         for i in range(0, len(self.destination) - 1):
@@ -258,7 +258,7 @@ class AirSimDroneEnv(AirSimEnv):
         if reward <= -10:
             done = 1
 
-        return rewards, done
+        return reward, done
 
 
     def step(self, action):
